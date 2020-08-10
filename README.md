@@ -1,6 +1,6 @@
 # OracleRESTService
 
-A simple example for creating generic readonly GET REST-endpoints for tables in an Oracle DB backend using [oracledb](https://www.npmjs.com/package/oracledb).
+A simple example for creating configurable readonly GET REST-endpoints for data in an Oracle DB backend using [oracledb](https://www.npmjs.com/package/oracledb).
 
 ## Configuration setup
 
@@ -41,5 +41,10 @@ Queries the respective tables and returns the result-set as an array of JSON obj
 
 - A locally installed Oracle XE 18c with user `test` in the container `XEPDB1`.
 - Oracle libraries registered with `ldconfig`. To do so, as root:
-  - Add path to the libs to /etc/ld.so.conf directly or create a new conf file under `/etc/ld.so.conf.d`
+  - Add path to the libs to `/etc/ld.so.conf` directly or create a new conf file under `/etc/ld.so.conf.d`
   - Run `ldconfig`
+  - E.g. assuming Oracle was installed in `/opt/oracle`:
+  ```bash
+  $ echo "/opt/oracle/product/18c/dbhomeXE/lib" > /etc/ld.so.conf.d/oracle-xe-18c.conf
+  $ ldconfig
+  ```

@@ -1,11 +1,8 @@
 {
   "name": "oraclerestservice",
   "version": "1.0.0",
-  "description": "A simple example for creating generic readonly GET REST-endpoints for tables in an Oracle DB.",
+  "description": "A simple example for creating configurable readonly GET REST-endpoints for data in an Oracle DB.",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "engines": {
     "node": "12.x.x",
     "npm": "6.x.x"

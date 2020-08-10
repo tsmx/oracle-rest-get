@@ -2,7 +2,7 @@
     "dbconfig": {
         "user": "test",
         "password": "test",
-        "connectString": "localhost/xe"
+        "connectString": "localhost/xepdb1"
     },
     "entities": [
         {

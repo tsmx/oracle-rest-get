@@ -1,15 +1,27 @@
 {
   "name": "oraclerestservice",
   "version": "1.0.0",
-  "description": "Simple Oracle REST-Service for reading table contents.",
+  "description": "A simple example for creating generic readonly GET REST-endpoints for tables in an Oracle DB.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12.x.x",
+    "npm": "6.x.x"
   },
   "author": "Sebastian Stricker",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
-    "oracledb": "^3.1.0"
-  }
+    "oracledb": "^5.0.0"
+  },
+  "keywords": [
+    "Oracle",
+    "oracledb",
+    "REST",
+    "GET",
+    "routing",
+    "generic"
+  ]
 }

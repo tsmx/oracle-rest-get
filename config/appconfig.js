@@ -3,7 +3,6 @@ var appConfig = require('../config/config.json');
 var oracledbcontroller = require('../controller/oracledbcontroller');
 
 function logRouteItem(item) {
-    console.log("   --> url:   " + item.url);
     console.log("   --> table: " + item.tablename);
     console.log("   --> id:    " + item.id);
 }
@@ -14,9 +13,12 @@ module.exports.initialize = function (app) {
     appConfig.entities.forEach(element => {
         // save route item in map
         routeItems.set(element.url, element);
-        // register route
-        app.get(element.url, oracledbcontroller.getData);
+        // register route for getting all objects
+        app.get(element.url, (req, res) => { oracledbcontroller.getData(req, res, element.tablename) });
         console.log("  registered url: " + element.url);
+        // register route for getting a single object by ID
+        app.get(element.url + '/:id', (req, res) => { oracledbcontroller.getDataByID(req, res, element.tablename, req.params.id) });
+        console.log("  registered url: " + element.url + '/:id');
         logRouteItem(element);
     });
     console.log("OracleRESTService initialization done. ");

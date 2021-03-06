@@ -1,27 +1,29 @@
+const appConfig = require('../config/config.json');
+const oracledbcontroller = require('../controller/oracledbcontroller');
+const logger = require('../utils/logging').logger;
+
 var routeItems = new Map();
-var appConfig = require('../config/config.json');
-var oracledbcontroller = require('../controller/oracledbcontroller');
 
 function logRouteItem(item) {
-    console.log("   --> table: " + item.tablename);
-    console.log("   --> id:    " + item.id);
+    logger.info("   --> table: " + item.tablename);
+    logger.info("   --> id:    " + item.id);
 }
 
 module.exports.initialize = function (app) {
-    console.log("OracleRESTService initializing... ");
+    logger.info("OracleRESTService initializing... ");
     // get the route items and register them 
     appConfig.entities.forEach(element => {
         // save route item in map
         routeItems.set(element.url, element);
         // register route for getting all objects
         app.get(element.url, (req, res) => { oracledbcontroller.getData(req, res, element.tablename) });
-        console.log("  registered url: " + element.url);
+        logger.info("  registered url: " + element.url);
         // register route for getting a single object by ID
         app.get(element.url + '/:id', (req, res) => { oracledbcontroller.getDataByID(req, res, element.tablename, req.params.id) });
-        console.log("  registered url: " + element.url + '/:id');
+        logger.info("  registered url: " + element.url + '/:id');
         logRouteItem(element);
     });
-    console.log("OracleRESTService initialization done. ");
+    logger.info("OracleRESTService initialization done. ");
 }
 
 module.exports.dbConfig = appConfig.dbconfig;

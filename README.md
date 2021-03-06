@@ -1,6 +1,6 @@
-# OracleRESTService
+# oracle-rest-get
 
-A simple example for creating configurable readonly GET REST-endpoints for data in an Oracle DB backend using [oracledb](https://www.npmjs.com/package/oracledb).
+A simple example for creating configurable readonly GET REST-endpoints for data in an Oracle DB tables or views using [oracledb](https://www.npmjs.com/package/oracledb).
 
 ## Configuration setup
 
@@ -48,3 +48,12 @@ Queries the respective tables and returns the result-set as an array of JSON obj
   $ echo "/opt/oracle/product/18c/dbhomeXE/lib" > /etc/ld.so.conf.d/oracle-xe-18c.conf
   $ ldconfig
   ```
+
+## Considerations before production use
+
+The provided code is a first step to get a read-only REST interface up & running for an Oracle DB. Before using it in production you should at least consider the following points:
+
+- Securing the configuration where sensible data is currently stored as plain text. For that I recommend my project [secure-config](https://www.npmjs.com/package/@tsmx/secure-config).
+- Adding filter functionality to the list retrieval methods, e.g. as query strings. Also here have a closer look on security as passed values will have to make it to your queries.
+- Take care about compound keys if needed.
+- Be sure that the provided DB user only has read rights on the objects (tables/views) he really needs. 

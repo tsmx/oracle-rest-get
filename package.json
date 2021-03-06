@@ -1,7 +1,7 @@
 {
-  "name": "oraclerestservice",
+  "name": "oracle-rest-get",
   "version": "1.0.0",
-  "description": "A simple example for creating configurable readonly GET REST-endpoints for data in an Oracle DB.",
+  "description": "A simple example for creating configurable readonly GET REST-endpoints for data in an Oracle DB tables or views.",
   "main": "app.js",
   "engines": {
     "node": "12.x.x",
